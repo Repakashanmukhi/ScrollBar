@@ -1,0 +1,158 @@
+<mvc:View controllerName="scrollcontainer.controller.scroll"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+    <ScrollContainer >
+    <Table items = "{sampleJSONModel>/sampleCollection}" id="ProductData" fixedLayout="false">
+        <columns>
+            <Column>
+                <header>
+                    <Label 
+                    text="MANDT"></Label>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label 
+                    text="SALES_DOCUMENT"></Label>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label 
+                    text="SALES_DOCUMENT_ITEM"></Label>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label 
+                    text="SCHEDULE_LINE_NO"></Label>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label 
+                    text="PRODUCT_ID"></Label>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label 
+                    text="MATERIAL_VARIANT"></Label>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label 
+                    text="REASON_4REJECTION"></Label>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label 
+                    text="UOM"></Label>
+                </header>
+            </Column>
+             <Column>
+                <header>
+                    <Label 
+                    text="CONFIRMED_QTY"></Label>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label 
+                    text="QTY_UNITS"></Label>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label 
+                    text="PROD_AVAILABILITY_DT"></Label>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label 
+                    text="NET_VALUE"></Label>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label 
+                    text="CUSTOMER_GROUP"></Label>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label 
+                    text="LOCATION_ID"></Label>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label 
+                    text="SALES_ORG"></Label>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label 
+                    text="DISTR_CHANNEL"></Label>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label 
+                    text="DIVISION"></Label>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label 
+                    text="SAL_DOCU_TYPE"></Label>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label 
+                    text="ITEM_CREATED_DATE"></Label>
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Label 
+                    text="ITEM_CHANGE_DATE"></Label>
+                </header>
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem>
+                <cells>
+                    <Text text="{sampleJSONModel>MANDT}"></Text>
+                    <Text text="{sampleJSONModel>SALES_DOCUMENT}"></Text>
+                    <Text text="{sampleJSONModel>SALES_DOCUMENT_ITEM}"></Text>
+                    <Text text="{sampleJSONModel>SCHEDULE_LINE_NO}"></Text>
+                    <Text text="{sampleJSONModel>PRODUCT_ID}"></Text>
+                    <Text text="{sampleJSONModel>MATERIAL_VARIANT}"></Text>
+                    <Text text="{sampleJSONModel>REASON_4REJECTION}"></Text>
+                    <Text text="{sampleJSONModel>UOM}"></Text>
+                    <Text text="{sampleJSONModel>CONFIRMED_QTY}"></Text> 
+                    <Text text="{sampleJSONModel>QTY_UNITS}"></Text>
+                    <Text text="{sampleJSONModel>PROD_AVAILABILITY_DT}"></Text>
+                    <Text text="{sampleJSONModel>NET_VALUE}"></Text>
+                    <Text text="{sampleJSONModel>CUSTOMER_GROUP}"></Text>
+                    <Text text="{sampleJSONModel>LOCATION_ID}"></Text>
+                    <Text text="{sampleJSONModel>SALES_ORG}"></Text>
+                    <Text text="{sampleJSONModel>DISTR_CHANNEL}"></Text>
+                    <Text text="{sampleJSONModel>DIVISION}"></Text>
+                    <Text text="{sampleJSONModel>SAL_DOCU_TYPE}"></Text>
+                    <Text text="{sampleJSONModel>ITEM_CREATED_DATE}"></Text>
+                    <Text text="{sampleJSONModel>ITEM_CHANGE_DATE}"></Text>
+                </cells> 
+            </ColumnListItem>
+        </items>
+    </Table>
+    </ScrollContainer>
+    </Page>
+</mvc:View>
