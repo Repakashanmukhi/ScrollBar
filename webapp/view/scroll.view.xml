@@ -7,6 +7,7 @@
     <Bar >
         <contentRight>
             <Button text="Upload" press="onUpload"></Button>
+            <Button text="Download" press="onDownload"></Button>
         </contentRight>
     </Bar>
     <Table items = "{sampleJSONModel>/sampleCollection}" id="ProductData" fixedLayout="false">

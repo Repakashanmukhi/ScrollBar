@@ -44,6 +44,19 @@ sap.ui.define([
             oVizFrame.addFeed(oFeedValue);
             oVizFrame.setVizType("stacked_column");
         },
+        onDownload: function(oEvent) 
+        {
+            var oTable = this.getView().byId("ProductData");
+            var aItems = oTable.getItems();
+            var aTableData = [
+                ["MANDT", "SALES DOCUMENT", "SALES ITEM", "SCHEDULE LINE NO", "PRODUCT ID", "MATERIAL VARIANT", "UOM", "CONFIRMED QUANTITY", "QUANTITY UNITS", "PRODUCT AVALIABILTY", "NET VALUE", "CUSTOMER GROUP", "LOCATION ID", "SALES ORDER", "DISTR CHANNEL", "DIVISION", "SALES DOCUMENT TYPE"] 
+            ];
+            var oSheet = XLSX.utils.aoa_to_sheet(aTableData);
+            var oWorkbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(oWorkbook, oSheet, "Employee Data");  
+            var sFileName = "ProductData.xlsx";
+            XLSX.writeFile(oWorkbook, sFileName);
+        }, 
         onUpload: function(){
             if (!that.upload) 
                 {
