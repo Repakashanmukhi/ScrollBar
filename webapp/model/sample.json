@@ -8,7 +8,6 @@
             "SCHEDULE_LINE_NO": 1,
             "PRODUCT_ID": "VCP_1600",
             "MATERIAL_VARIANT": "VCP_1600",
-            "REASON_4REJECTION": "",
             "UOM": "EA",
             "CONFIRMED_QTY": 0,
             "QTY_UNITS": 11,
@@ -117,6 +116,5 @@
             "ITEM_CREATED_DATE": "2025-01-22",
             "ITEM_CHANGE_DATE": "2025-01-29"
           }
-          
-    ]
-}
+        ]
+      }
