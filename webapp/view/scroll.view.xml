@@ -2,144 +2,14 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:viz="sap.viz.ui5.controls"
     xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-    <ScrollContainer >
+    <Page id="page">
     <Bar >
         <contentRight>
             <Button text="Upload" press="onUpload"></Button>
             <Button text="Download" press="onDownload"></Button>
+            <Button text="Get my CD collection" press="loadXMLDoc()"></Button>
         </contentRight>
     </Bar>
-    <Table items = "{sampleJSONModel>/sampleCollection}" id="ProductData" fixedLayout="false">
-        <columns>
-            <Column>
-                <header>
-                    <Label text="MANDT"></Label>
-                </header>
-            </Column>
-            <Column>
-                <header>
-                    <Label text="SALES DOCUMENT"></Label>
-                </header>
-            </Column>
-            <Column>
-                <header>
-                    <Label text="SALES ITEM"></Label>
-                </header>
-            </Column>
-            <Column>                                     
-                <header>
-                    <Label text="SCHEDULE LINE NO"></Label>
-                </header>
-            </Column>
-            <Column>
-                <header>
-                    <Label text="PRODUCT ID"></Label>
-                </header>
-            </Column>
-            <Column>
-                <header>
-                    <Label text="MATERIAL VARIANT"></Label>
-                </header>
-            </Column>
-            <Column>
-                <header>
-                    <Label text="UOM"></Label>
-                </header>
-            </Column>
-             <Column>
-                <header>
-                    <Label text="CONFIRMED QUANTITY"></Label>
-                </header>
-            </Column>
-            <Column>
-                <header>
-                    <Label text="QUANTITY UNITS"></Label>
-                </header>
-            </Column>
-            <Column>
-                <header>
-                    <Label text="PRODUCT AVALIABILTY"></Label>
-                </header>
-            </Column>
-            <Column>
-                <header>
-                    <Label text="NET VALUE"></Label>
-                </header>
-            </Column>
-            <Column>
-                <header>
-                    <Label text="CUSTOMER GROUP"></Label>
-                </header>
-            </Column>
-            <Column>
-                <header>
-                    <Label text="LOCATION ID"></Label>
-                </header>
-            </Column>
-            <Column>
-                <header>
-                    <Label text="SALES ORDER"></Label>
-                </header>
-            </Column>
-            <Column>
-                <header>
-                    <Label text="DISTR CHANNEL"></Label>
-                </header>
-            </Column>
-            <Column>
-                <header>
-                    <Label text="DIVISION"></Label>
-                </header>
-            </Column>
-            <Column>
-                <header>
-                    <Label text="SALES DOCUMENT TYPE"></Label>
-                </header>
-            </Column>
-        </columns>
-        <items>
-            <ColumnListItem>
-                <cells>
-                    <Text text="{sampleJSONModel>MANDT}"></Text>
-                    <Text text="{sampleJSONModel>SALES_DOCUMENT}"></Text>
-                    <Text text="{sampleJSONModel>SALES_DOCUMENT_ITEM}"></Text>
-                    <Text text="{sampleJSONModel>SCHEDULE_LINE_NO}"></Text>
-                    <Text text="{sampleJSONModel>PRODUCT_ID}"></Text>
-                    <Text text="{sampleJSONModel>MATERIAL_VARIANT}"></Text>
-                    <Text text="{sampleJSONModel>UOM}"></Text>
-                    <Text text="{sampleJSONModel>CONFIRMED_QTY}"></Text> 
-                    <Text text="{sampleJSONModel>QTY_UNITS}"></Text>
-                    <Text text="{sampleJSONModel>PROD_AVAILABILITY_DT}"></Text>
-                    <Text text="{sampleJSONModel>NET_VALUE}"></Text>
-                    <Text text="{sampleJSONModel>CUSTOMER_GROUP}"></Text>
-                    <Text text="{sampleJSONModel>LOCATION_ID}"></Text>
-                    <Text text="{sampleJSONModel>SALES_ORG}"></Text>
-                    <Text text="{sampleJSONModel>DISTR_CHANNEL}"></Text>
-                    <Text text="{sampleJSONModel>DIVISION}"></Text>
-                    <Text text="{sampleJSONModel>SAL_DOCU_TYPE}"></Text>
-                </cells> 
-            </ColumnListItem>
-        </items>
-    </Table>
-    </ScrollContainer>
-    <VBox class="sapUiSmallMargin">
-                <viz:VizFrame
-                    id="idVizFrame"
-                    uiConfig="{applicationSet:'fiori'}"
-                    height="400px"
-                    width="100%"
-                    vizType="stacked_column"
-                                vizProperties="{
-                    title : {text:'Overall Quantity Units'}
-                }">
-                    <viz:dataset>
-                        <!-- Dataset will be bound dynamically in the controller -->
-                    </viz:dataset>
-                    <viz:feeds>
-                        <!-- Feeds will be added dynamically in the controller -->
-                    </viz:feeds>
-                </viz:VizFrame>
-            </VBox>
+    <Table id="excelData"></Table>
     </Page>
 </mvc:View>
