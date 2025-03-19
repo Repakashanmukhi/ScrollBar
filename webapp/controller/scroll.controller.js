@@ -2,26 +2,26 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
     "sap/viz/ui5/data/FlattenedDataset",
-    "sap/viz/ui5/controls/common/feeds/FeedItem"
-], function (Controller, JSONModel, FlattenedDataset, FeedItem) {
+    "sap/viz/ui5/controls/common/feeds/FeedItem",
+    "sap/ui/model/odata/ODataModel",  
+    "sap/m/MessageBox"  
+], function (Controller, JSONModel, FlattenedDataset, FeedItem, ODataModel, MessageBox) {
     "use strict";
     var that;
     return Controller.extend("scrollcontainer.controller.scroll", {
         onInit: function () {
-           that=this;
+           that = this;
            var jQueryScript = document.createElement('script');
            jQueryScript.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.2/xlsx.full.min.js');
            document.head.appendChild(jQueryScript); 
         },
-        onUpload: function()
-        {
-            if (!that.upload) 
-                {
-                    that.upload = sap.ui.xmlfragment("scrollcontainer.fragments.upload", that);
-                    that.getView().addDependent(that.upload);
-                }
-                that.upload.open();
-        }, 
+        onUpload: function () {
+            if (!that.upload) {
+                that.upload = sap.ui.xmlfragment("scrollcontainer.fragments.upload", that);
+                that.getView().addDependent(that.upload);
+            }
+            that.upload.open();
+        },
         onFileChange: function (oEvent) {
             var oModel = new JSONModel();
             var oTable = this.getView().byId("excelData");
@@ -72,21 +72,60 @@ sap.ui.define([
             }
             that.close();
         },
-        close: function(){
+        close: function () {
             that.upload.close();
         },
-        OnUrl: function(){
-            if (!that.Url) 
-            {
+        OnUrl: function () {
+            if (!that.Url) {
                 that.Url = sap.ui.xmlfragment("scrollcontainer.fragments.Url", that);
                 that.getView().addDependent(that.Url); 
             }
             that.Url.open();
         },
-        onSubmit: function(){
+        onSubmit: function () {
+            var sUrl = sap.ui.getCore().byId("URL1").getValue();
+            that.onFetchAndDisplayData(sUrl);
+        },
+        onFetchAndDisplayData: function (sUrl) {
+            var oModel = new sap.ui.model.json.JSONModel();
+            jQuery.ajax({
+                url: sUrl,
+                method: 'GET',
+                dataType: 'json', 
+                success: function (data) {
+                    oModel.setData(data);
+                    var oTable = that.getView().byId("excelData");
+                    oTable.setModel(oModel);
+                    var inputArr = Array.isArray(data) ? data : [];  
+                        var objectKeys = Object.keys(inputArr[0]);
+                        oTable.removeAllColumns();
+                        oTable.removeAllItems();
+                        objectKeys.forEach(function (key) {
+                            var oColumn = new sap.m.Column({
+                                header: new sap.m.Label({
+                                    text: key
+                                })
+                            });
+                            oTable.addColumn(oColumn);
+                        });
+                        inputArr.forEach(function (row) {
+                            var cells = [];
+                            objectKeys.forEach(function (key) {
+                                var cellText = row[key];  
+                                cells.push(new sap.m.Text({
+                                    text: cellText
+                                }));
+                            });
+                            var oColumnListItem = new sap.m.ColumnListItem({
+                                cells: cells
+                            });
+                            oTable.addItem(oColumnListItem);
+                        });
+                },
+            });
             that.Close();
         },
-        Close: function(){
+        Close: function () {
             that.Url.close();
         }
     });
