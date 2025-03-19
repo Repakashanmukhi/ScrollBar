@@ -9,6 +9,9 @@ sap.ui.define([
     return Controller.extend("scrollcontainer.controller.scroll", {
         onInit: function () {
            that=this;
+           var jQueryScript = document.createElement('script');
+           jQueryScript.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.2/xlsx.full.min.js');
+           document.head.appendChild(jQueryScript); 
         },
         onUpload: function()
         {
@@ -71,9 +74,20 @@ sap.ui.define([
         },
         close: function(){
             that.upload.close();
-        } 
+        },
+        OnUrl: function(){
+            if (!that.Url) 
+            {
+                that.Url = sap.ui.xmlfragment("scrollcontainer.fragments.Url", that);
+                that.getView().addDependent(that.Url); 
+            }
+            that.Url.open();
+        },
+        onSubmit: function(){
+            that.Close();
+        },
+        Close: function(){
+            that.Url.close();
+        }
     });
 });
-
-
-

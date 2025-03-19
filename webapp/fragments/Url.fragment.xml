@@ -1,0 +1,17 @@
+<core:FragmentDefinition xmlns:unified="sap.ui.unified" xmlns:layout="sap.ui.layout" xmlns:core= "sap.ui.core" xmlns:f="sap.ui.layout.form" 
+xmlns="sap.m">
+<Dialog id="Url">
+    <VBox class="sapUiTinyMargin" >
+        <Label text="Provide your URL here" />
+        <Input id="URL1" width="250px" editable="true"/>
+    </VBox>
+    <footer>
+        <Toolbar>
+            <ToolbarSpacer/>
+                <Button text="Submit" press="onSubmit"/>
+                <Button text="Cancel" press="Close"/>
+        </Toolbar>
+    </footer>
+</Dialog>
+</core:FragmentDefinition>
+ 
