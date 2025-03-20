@@ -19,7 +19,7 @@ sap.ui.define([
             if (!that.upload) {
                 that.upload = sap.ui.xmlfragment("scrollcontainer.fragments.upload", that);
                 that.getView().addDependent(that.upload);
-            }
+            }      
             that.upload.open();
         },
         onFileChange: function (oEvent) {
@@ -96,7 +96,7 @@ sap.ui.define([
                     oModel.setData(data);
                     var oTable = that.getView().byId("excelData");
                     oTable.setModel(oModel);
-                    var inputArr = Array.isArray(data) ? data : [];  
+                    var inputArr = data;
                         var objectKeys = Object.keys(inputArr[0]);
                         oTable.removeAllColumns();
                         oTable.removeAllItems();
