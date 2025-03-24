@@ -1,7 +1,8 @@
 <mvc:View controllerName="scrollcontainer.controller.scroll"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:viz="sap.viz.ui5.controls"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table">
     <Page id="page">
     <Bar >
         <contentRight>
@@ -9,6 +10,9 @@
             <Button text="Get URL Data" press="OnUrl"></Button>
         </contentRight>
     </Bar>
-    <Table id="excelData"></Table>
+    <!-- using sap.ui.table -->
+    <table:Table id="Data" ></table:Table>
+    <!-- using sap.m table 
+    <Table id="excelData"></Table> -->
     </Page>
 </mvc:View>
