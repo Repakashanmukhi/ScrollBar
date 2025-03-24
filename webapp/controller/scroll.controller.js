@@ -81,7 +81,7 @@ sap.ui.define([
             }
             that.close(); 
         },        
-        close: function () {
+        close: function () {                      
             that.upload.close();
         },
         OnUrl: function () {
@@ -116,7 +116,7 @@ sap.ui.define([
                                 text: key
                             }),
                             template: new sap.m.Text({
-                                text: "{" + key + "}" 
+                            text: "{" + key + "}" 
                             })
                         });
                         oTable.addColumn(oColumn);
