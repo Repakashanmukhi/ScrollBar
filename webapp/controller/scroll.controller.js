@@ -151,6 +151,9 @@ sap.ui.define([
         },
         Close: function () {
             that.Url.close();
+        },
+        Exit:function(oEvent){
+            sap.m.MessageToast.show("Exit from page");        
         }
     });
 });
