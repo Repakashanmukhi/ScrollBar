@@ -79,8 +79,7 @@
                 "type": "View",
                 "viewType": "XML",
                 "path": "scrollcontainer.view",
-                "async": true,
-                "viewPath": "scrollcontainer.view"
+                "async": true
             },
             "routes": [
                 {

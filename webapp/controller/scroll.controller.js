@@ -152,6 +152,24 @@ sap.ui.define([
         Close: function () {
             that.Url.close();
         },
+        handleSelect: function (oEvent) {
+            var sSelectedKey = oEvent.getSource().getSelectedKey();
+            if (sSelectedKey === "TinyMCE6") {
+                var oButton = new sap.m.Button({
+                    text: "My Button",
+                    press: function () {
+                        sap.m.MessageToast.show("Button Pressed");
+                    }
+                });
+                var oContainer = this.getView().byId("buttonContainer");
+                if (oContainer) {
+                    oContainer.removeAllItems();
+                    oContainer.addItem(oButton);
+                }
+            } else if (sSelectedKey === "TinyMCE5") {
+                sap.m.MessageToast.show("TinyMCE5 selected. Loading editor...");
+            }
+        },
         Exit:function(oEvent){
             sap.m.MessageToast.show("Exit from page");        
         }

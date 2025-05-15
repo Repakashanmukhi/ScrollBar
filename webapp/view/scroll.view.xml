@@ -1,4 +1,4 @@
-<mvc:View controllerName="scrollcontainer.controller.scroll"
+<mvc:View xmlns:core="sap.ui.core" controllerName="scrollcontainer.controller.scroll"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:viz="sap.viz.ui5.controls"
     xmlns="sap.m"
@@ -10,6 +10,14 @@
             <Button text="Get URL Data" press="OnUrl"></Button>
         </contentRight>
     </Bar>
+    <HBox alignItems="Center">
+			<Label text="Select TinyMCE version:" labelFor="idSelect" class="sapUiSmallMarginEnd"/>
+			<Select id="idSelect" change="handleSelect">
+                <core:Item key="TinyMCE6" text="RichEditor with TinyMCE6"></core:Item>
+                <core:Item key="TinyMCE5" text="RichEditor with TinyMCE5"></core:Item>
+			</Select>
+	</HBox>
+    <VBox id="buttonContainer"></VBox>
     <!-- using sap.ui.table -->
     <table:Table id="Data" ></table:Table>
     <!-- using sap.m table 
