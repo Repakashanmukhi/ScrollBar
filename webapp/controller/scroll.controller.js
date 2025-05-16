@@ -3,8 +3,9 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "sap/ui/model/odata/ODataModel",  
     "sap/m/MessageBox",
-    "sap/ui/table/Table"
-], function (Controller, JSONModel, ODataModel, MessageBox,Table) {
+    "sap/ui/table/Table",
+    "sap/m/Bar"
+], function (Controller, JSONModel, ODataModel, MessageBox,Table,Bar) {
     "use strict";
     var that;
     return Controller.extend("scrollcontainer.controller.scroll", {
@@ -52,7 +53,7 @@ sap.ui.define([
                     });
                     oTable.bindRows("/data"); 
                 };
-                //Using sap.m.Column(m.table)
+                                                                //Using sap.m.Column(m.table)
                 // objectKeys.forEach(function (key) {
                 //     var oColumn = new sap.m.Column({
                 //         header: new sap.m.Label({
@@ -123,7 +124,7 @@ sap.ui.define([
                     });
                     oTable.bindRows("/"); 
                 },
-                // Using sap.m.Column(m.table)
+                                                        // Using sap.m.Column(m.table)
                 // objectKeys.forEach(function (key) 
                 // {
                 //     var oColumn = new sap.m.Column({
@@ -152,26 +153,42 @@ sap.ui.define([
         Close: function () {
             that.Url.close();
         },
+                                                // Rich text editor using controller
         handleSelect: function (oEvent) {
-            var sSelectedKey = oEvent.getSource().getSelectedKey();
-            if (sSelectedKey === "TinyMCE6") {
-                var oButton = new sap.m.Button({
-                    text: "My Button",
-                    press: function () {
-                        sap.m.MessageToast.show("Button Pressed");
-                    }
-                });
-                var oContainer = this.getView().byId("buttonContainer");
-                if (oContainer) {
-                    oContainer.removeAllItems();
-                    oContainer.addItem(oButton);
+			var sSelectedKey = oEvent.getParameters().selectedItem.getKey();
+			if (this.oRichTextEditor) {
+				this.oRichTextEditor.destroy();
+			}
+			switch (sSelectedKey) {
+				case "TinyMCE5":
+					this.initRichTextEditor(true);
+					break;
+				default:
+					this.initRichTextEditor(false);
+					break;
+			}
+		},
+        initRichTextEditor: function(bIsTinyMCE5){
+            var sHtmlValue= 'Hello Shanmukhi Repaka'
+            sap.ui.require(["sap/ui/richtexteditor/RichTextEditor", "sap/ui/richtexteditor/library"],
+                function (RTE, library){
+                    var EditorType = library.EditorType;
+                    that.oRichTextEditor = new RTE("myRTE",{
+                        editorType: bIsTinyMCE5 ? EditorType.TinyMCE5 : EditorType.TinyMCE6,
+                        width: "100%",
+                        height: "600px",
+                        customToolbar: true,
+                        customGroupFont: true,
+                        showGroupLink: true,
+                        showGroupInsert: true,
+                        value: sHtmlValue,
+                        ready: function(){
+                            bIsTinyMCE5 ? this.addButtonGroup("styleselect").addButtonGroup("table"): this.addButtonGroup("styles").addButtonGroup("table");
+                        }
+                    });
+                    that.getView().byId("idVerticalLayout").addContent(that.oRichTextEditor);
                 }
-            } else if (sSelectedKey === "TinyMCE5") {
-                sap.m.MessageToast.show("TinyMCE5 selected. Loading editor...");
-            }
-        },
-        Exit:function(oEvent){
-            sap.m.MessageToast.show("Exit from page");        
+            );
         }
     });
 });

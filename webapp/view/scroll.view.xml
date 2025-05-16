@@ -2,26 +2,37 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:viz="sap.viz.ui5.controls"
     xmlns="sap.m"
-    xmlns:table="sap.ui.table">
-    <Page id="page">
+    xmlns:table="sap.ui.table"
+    xmlns:l="sap.ui.layout">
+    <Page id="page"
+    xmlns:rte="sap.ui.richtexteditor">
     <Bar >
         <contentRight>
             <Button text="Upload" press="onUpload" id="random"></Button>
             <Button text="Get URL Data" press="OnUrl"></Button>
         </contentRight>
     </Bar>
-    <HBox alignItems="Center">
-			<Label text="Select TinyMCE version:" labelFor="idSelect" class="sapUiSmallMarginEnd"/>
-			<Select id="idSelect" change="handleSelect">
-                <core:Item key="TinyMCE6" text="RichEditor with TinyMCE6"></core:Item>
-                <core:Item key="TinyMCE5" text="RichEditor with TinyMCE5"></core:Item>
-			</Select>
-	</HBox>
-    <VBox id="buttonContainer"></VBox>
     <!-- using sap.ui.table -->
     <table:Table id="Data" ></table:Table>
+
     <!-- using sap.m table 
     <Table id="excelData"></Table> -->
+
+    <!-- with the help of controller for richtexteditor -->
+    <l:VerticalLayout id="idVerticalLayout" class="sapUiContentPadding" width="100%">
+        <HBox alignItems="Center">
+            <Label text="Select TinyMCE version:" labelFor="idSelect" class="sapUiSmallMarginEnd"/>
+            <Select id="idSelect" change="handleSelect">
+                <core:Item key="TinyMCE6" text="Rich Text Editor with TinyMCE6"/>
+                <core:Item key="TinyMCE7" text="Rich Text Editor with TinyMCE5"/>
+            </Select>
+        </HBox>
+    </l:VerticalLayout>
+
+    <!-- Witout using a controller, directly from View -->
+    <!-- <VBox >
+        <rte:RichTextEditor id="rte1" width="100%" height="300px" value="Type your content here..." /> 
+  </VBox> -->
     <Toolbar >
     <ToolbarSpacer ></ToolbarSpacer>
         <Button text="Exit" press="Exit"></Button>
